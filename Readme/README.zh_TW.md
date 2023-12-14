@@ -3,14 +3,21 @@
 <br>
 <br>
 
-# 安裝 NuGet 套件
-為了開發此專案，需要安裝以下 NuGet 套件：
-- Microsoft.Windows.CppWinRT
-- Microsoft.Windows.ImplementationLibrary
+## 準備工具
+為了開發此專案，需要準備以下工具：
+- [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hant/vs/whatsnew/)
+- [Windows SDK](https://developer.microsoft.com/zh-tw/windows/downloads/windows-sdk/)
 <br>
 <br>
 
-# 產生 Sparse package 流程
+## 安裝 NuGet 套件
+Visual Studio 2022 需要安裝以下 NuGet 套件：
+- [Microsoft.Windows.CppWinRT](https://github.com/Microsoft/cppwinrt)
+- [Microsoft.Windows.ImplementationLibrary](https://github.com/Microsoft/wil)
+<br>
+<br>
+
+## 產生 Sparse package 流程
 以下是產生 Sparse package 的步驟：
 
 1. **準備好 Win11 客製選單 DLL**：

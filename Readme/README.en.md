@@ -3,14 +3,21 @@ This is a demo project for Win11 modern context menu, implemented using the IExp
 <br>
 <br>
 
-# Install NuGet Packages
-To develop this project, you need to install the following NuGet packages:
-- Microsoft.Windows.CppWinRT
-- Microsoft.Windows.ImplementationLibrary
+## Preparation Tools
+To develop this project, you will need the following tools:
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/whatsnew/)
+- [Windows SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/)
 <br>
 <br>
 
-# Generating Sparse Package Process
+## Install NuGet Packages
+For Visual Studio 2022, the following NuGet packages need to be installed:
+- [Microsoft.Windows.CppWinRT](https://github.com/Microsoft/cppwinrt)
+- [Microsoft.Windows.ImplementationLibrary](https://github.com/Microsoft/wil)
+<br>
+<br>
+
+## Generating Sparse Package Process
 Here are the steps to generate a Sparse package:
 
 1. **Prepare Win11 Custom Menu DLL**:
