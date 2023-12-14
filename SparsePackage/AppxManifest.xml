@@ -11,7 +11,7 @@
   xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
   xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
   IgnorableNamespaces="uap uap2 uap3 rescap desktop desktop4 desktop5 uap10 com">
-  <Identity Name="Win11ContextMenuDemo" ProcessorArchitecture="neutral" Publisher="CN=Contoso Software, O=Contoso Corporation, C=US" Version="1.0.0.0" />
+  <Identity Name="Win11ContextMenuDemo" ProcessorArchitecture="neutral" Publisher="CN=MomoChenIsMe, C=TW" Version="1.0.0.0" />
   <Properties>
     <DisplayName>Win11ContextMenuDemo</DisplayName>
     <PublisherDisplayName>Win11ContextMenuDemo</PublisherDisplayName>
@@ -33,14 +33,14 @@
         <desktop4:Extension Category="windows.fileExplorerContextMenus">
           <desktop4:FileExplorerContextMenus>
             <desktop5:ItemType Type="Directory\Background">
-              <desktop5:Verb Id="EditWithWin11ContextMenuDemo" Clsid="15589FA6-768B-4826-97B8-D12DE265B3BB" />
+              <desktop5:Verb Id="MainMenuWithWin11ContextMenuDemo" Clsid="15589FA6-768B-4826-97B8-D12DE265B3BB" />
             </desktop5:ItemType>
           </desktop4:FileExplorerContextMenus>
         </desktop4:Extension>
         <com:Extension Category="windows.comServer">
           <com:ComServer>
             <com:SurrogateServer DisplayName="Win11ContextMenuDemo Shell Extension">
-              <com:Class Id="15589FA6-768B-4826-97B8-D12DE265B3BB" Path="Win11ContextMenu.dll" ThreadingModel="STA"/>
+              <com:Class Id="15589FA6-768B-4826-97B8-D12DE265B3BB" Path="Win11ContextMenuDemo.dll" ThreadingModel="STA"/>
             </com:SurrogateServer>
           </com:ComServer>
         </com:Extension>
