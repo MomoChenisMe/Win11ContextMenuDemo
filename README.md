@@ -7,8 +7,8 @@ This is a demo project for Win11 modern context menu, implemented using the IExp
 <br>
 
 # README.md
-- en [English](Readme\README.en.md)
-- zh_TW [繁體中文](Readme\README.zh_TW.md)
+- en [English](Readme/README.en.md)
+- zh_TW [繁體中文](Readme/README.zh_TW.md)
 <br>
 <br>
 
