@@ -42,6 +42,18 @@
     <ClInclude Include="MainExplorerCommand.h">
       <Filter>菜單</Filter>
     </ClInclude>
+    <ClInclude Include="ClassFactory.h">
+      <Filter>資源檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Sub1ExplorerCommand.h">
+      <Filter>菜單</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumExplorerCommand.h">
+      <Filter>菜單</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -68,6 +80,12 @@
     <ClCompile Include="MainExplorerCommand.cpp">
       <Filter>菜單</Filter>
     </ClCompile>
+    <ClCompile Include="EnumExplorerCommand.cpp">
+      <Filter>菜單</Filter>
+    </ClCompile>
+    <ClCompile Include="Sub1ExplorerCommand.cpp">
+      <Filter>菜單</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -77,5 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Win11ContextMenuDemo.rc">
+      <Filter>標頭檔</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

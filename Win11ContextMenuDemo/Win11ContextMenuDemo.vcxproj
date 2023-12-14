@@ -123,6 +123,13 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\SparsePackage\"
+regsvr32.exe "$(ProjectDir)..\SparsePackage\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>regsvr32.exe /u "$(ProjectDir)..\SparsePackage\$(ProjectName).dll"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -134,6 +141,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -143,20 +151,32 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\SparsePackage\"
+regsvr32.exe "$(ProjectDir)..\SparsePackage\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>regsvr32.exe /u "$(ProjectDir)..\SparsePackage\$(ProjectName).dll"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseExplorerCommand.h" />
+    <ClInclude Include="ClassFactory.h" />
+    <ClInclude Include="EnumExplorerCommand.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="InstallContextMenu.h" />
     <ClInclude Include="MainExplorerCommand.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RegistryController.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Sub1ExplorerCommand.h" />
     <ClInclude Include="Windows11Checker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseExplorerCommand.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="EnumExplorerCommand.cpp" />
     <ClCompile Include="InstallContextMenu.cpp" />
     <ClCompile Include="MainExplorerCommand.cpp" />
     <ClCompile Include="Path.cpp" />
@@ -167,11 +187,15 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RegistryController.cpp" />
+    <ClCompile Include="Sub1ExplorerCommand.cpp" />
     <ClCompile Include="Windows11Checker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Source.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Win11ContextMenuDemo.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
