@@ -1,9 +1,6 @@
 #pragma once
 #include "pch.h"
 
-// Win11ContextMenuDemo::Windows11Checker 命名空間
-// 此命名空間包含用於檢查操作系統版本的功能。
-// The Win11ContextMenuDemo::Windows11Checker namespace contains functionality for checking the operating system version.
 namespace Win11ContextMenuDemo::Windows11Checker
 {
     // 檢查當前操作系統是否為 Windows 11。

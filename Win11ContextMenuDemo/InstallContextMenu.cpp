@@ -18,7 +18,9 @@ const wstring REGISTRYSHELLEXTENSIONPATH = L"Software\\Classes\\*\\shellex\\Cont
 const wstring REGISTRYCLSIDPATH = L"Software\\Classes\\CLSID\\";
 const wstring REGISTRYFILESHELLEXPATH = L"_file\\shellex";
 
-inline Package GetSparsePackage(PackageManager& packageManager)
+// 獲取特定的 Sparse Package。
+// Gets a specific Sparse Package.
+Package GetSparsePackage(PackageManager& packageManager)
 {
 	try
 	{
@@ -40,28 +42,32 @@ inline Package GetSparsePackage(PackageManager& packageManager)
 	return nullptr;
 }
 
-inline IAsyncOperation<int32_t> UnRegisterSparsePackage()
+// 取消註冊 Sparse Package。
+// Unregisters the Sparse Package.
+HRESULT UnRegisterSparsePackage()
 {
 	PackageManager packageManager;
 	auto package = GetSparsePackage(packageManager);
 	if (!package)
 	{
-		co_return S_FALSE;
+		return S_FALSE;
 	}
 
 	winrt::hstring fullName = package.Id().FullName();
-	auto deploymentOperation = co_await packageManager.RemovePackageAsync(fullName, RemovalOptions::None);
-	//auto deployResult = deploymentOperation.get();
+	auto deploymentOperation = packageManager.RemovePackageAsync(fullName, RemovalOptions::None);
+	auto deployResult = deploymentOperation.get();
 
-	if (!SUCCEEDED(deploymentOperation.ExtendedErrorCode()))
+	if (!SUCCEEDED(deployResult.ExtendedErrorCode()))
 	{
-		co_return deploymentOperation.ExtendedErrorCode();
+		return deployResult.ExtendedErrorCode();
 	}
 
-	co_return S_OK;
+	return S_OK;
 }
 
-inline IAsyncOperation<int32_t> RegisterSparsePackage()
+// 註冊 Sparse Package。
+// Registers the Sparse Package.
+HRESULT RegisterSparsePackage()
 {
 	const wstring contextMenuDirectoryPath = Win11ContextMenuDemo::Path::GetContextMenuDirectoryPath();
 	const wstring sparsePackageFullPath = contextMenuDirectoryPath + L"\\" + CONTEXTMENUNAME + L".msix";
@@ -74,25 +80,37 @@ inline IAsyncOperation<int32_t> RegisterSparsePackage()
 	options.AllowUnsigned(true);
 
 	PackageManager packageManager;
-	auto deploymentOperation = co_await packageManager.AddPackageByUriAsync(packageUri, options);
-	//auto deployResult = deploymentOperation.get();
+	auto deploymentOperation = packageManager.AddPackageByUriAsync(packageUri, options);
+	auto deployResult = deploymentOperation.get();
 
-	if (!SUCCEEDED(deploymentOperation.ExtendedErrorCode()))
+	if (!SUCCEEDED(deployResult.ExtendedErrorCode()))
 	{
-		co_return deploymentOperation.ExtendedErrorCode();
+		return deployResult.ExtendedErrorCode();
 	}
 
-	co_return S_OK;
+	return S_OK;
 }
 
-inline IAsyncAction RegisterSparsePackageProgram()
+// 執行註冊 Sparse Package 的程序。
+// Executes the procedure for registering the Sparse Package.
+void RegisterSparsePackageProgram()
 {
 	winrt::init_apartment();
-	co_await UnRegisterSparsePackage();
-	co_await RegisterSparsePackage();
+	UnRegisterSparsePackage();
+	RegisterSparsePackage();
 }
 
-inline wstring GetCLSIDString()
+// 執行取消註冊 Sparse Package 的程序。
+// Executes the procedure for unregistering the Sparse Package.
+void UnRegisterSparsePackageProgram()
+{
+	winrt::init_apartment();
+	UnRegisterSparsePackage();
+}
+
+// 獲取 COM 類別的 CLSID 字串。
+// Gets the CLSID string for a COM class.
+wstring GetCLSIDString()
 {
 	const auto uuid = __uuidof(Win11ContextMenuDemo::ExplorerCommand::MainExplorerCommand);
 	LPOLESTR clsidString = nullptr;
@@ -106,7 +124,9 @@ inline wstring GetCLSIDString()
 	return clsid;
 }
 
-inline HRESULT RegisterContextMenu()
+// 註冊上下文菜單。
+// Registers the context menu.
+HRESULT RegisterContextMenu()
 {
 	const wstring clsid = GetCLSIDString();
 	RegistryControllerClass regExtController(HKEY_LOCAL_MACHINE, REGISTRYSHELLPATH + CONTEXTMENUNAME, KEY_READ | KEY_WRITE, true);
@@ -124,7 +144,9 @@ inline HRESULT RegisterContextMenu()
 	return S_OK;
 }
 
-inline HRESULT UnRegisterContextMenu()
+// 取消註冊上下文菜單。
+// Unregisters the context menu.
+HRESULT UnRegisterContextMenu()
 {
 	if (RegistryControllerClass::KeyExists(HKEY_LOCAL_MACHINE, REGISTRYSHELLPATH + CONTEXTMENUNAME))
 	{
@@ -162,7 +184,8 @@ HRESULT Win11ContextMenuDemo::InstallContextMenu::InstallContextMenu()
 	{
 		UnRegisterContextMenu();
 
-		RegisterSparsePackageProgram().get();
+		thread registerSparsePackageProgramThread(RegisterSparsePackageProgram);
+		registerSparsePackageProgramThread.join();
 	}
 
 	result = RegisterContextMenu();
@@ -185,12 +208,8 @@ HRESULT Win11ContextMenuDemo::InstallContextMenu::UnInstallContextMenu()
 
 	if (Win11ContextMenuDemo::Windows11Checker::IsWindows11())
 	{
-		result = UnRegisterSparsePackage().get();
-
-		if (result != S_OK)
-		{
-			return result;
-		}
+		thread unRegisterSparsePackageThread(UnRegisterSparsePackageProgram);
+		unRegisterSparsePackageThread.join();
 	}
 
 	SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, 0, 0);

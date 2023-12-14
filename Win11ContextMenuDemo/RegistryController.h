@@ -1,9 +1,6 @@
 #pragma once
 #include "pch.h"
 
-// Win11ContextMenuDemo::RegistryController 命名空間
-// 包含用於管理和操作 Windows 註冊表的類別。
-// The Win11ContextMenuDemo::RegistryController namespace contains a class for managing and manipulating the Windows registry.
 namespace Win11ContextMenuDemo::RegistryController
 {
     // RegistryControllerClass 用於訪問和修改 Windows 註冊表。
