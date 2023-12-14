@@ -1,9 +1,6 @@
 #pragma once
 #include "pch.h"
 
-// Win11ContextMenuDemo::Paths 命名空間
-// 提供各種與檔案路徑和執行檔名稱相關的實用功能。
-// The Win11ContextMenuDemo::Paths namespace provides various utilities related to file paths and executable names.
 namespace Win11ContextMenuDemo::Path
 {
     // 獲取應用程序所在目錄的路徑。
