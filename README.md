@@ -1,5 +1,7 @@
 # Win11 Context Menu Demo
-此為 Win11 的右鍵現代選單 Demo 用專案，透過 IExplorerCommannd 和 IEnumExplorerCommand介面，搭配Sparse package 實現客製化的上下文選單。<br>
+此為 Win11 的右鍵現代選單 Demo 用專案，透過 IExplorerCommannd 和 IEnumExplorerCommand介面，搭配Sparse package 實現客製化的上下文選單。
+<br>
+<br>
 This is a demo project for Win11 modern context menu, implemented using the IExplorerCommand interface and Sparse package.
 <br>
 <br>
