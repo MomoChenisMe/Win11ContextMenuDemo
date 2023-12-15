@@ -18,15 +18,13 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        // 當 DLL 被載入到進程時執行。
+        // 當 DLL 被載入到程序時執行。
         // Executed when the DLL is loaded into a process.
         g_module = hModule;
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:
-        // 當線程創建或終止，或進程卸載 DLL 時執行。
-        // Executed when a thread is created or terminated, or when the process unloads the DLL.
         break;
     }
     return TRUE;
@@ -72,7 +70,7 @@ catch (...)
     return winrt::to_hresult();
 }
 
-// 檢查是否可以卸載 DLL。
+// 檢查是否可以註銷 DLL。
 // Check whether the DLL can be unloaded.
 __control_entrypoint(DllExport) STDAPI DllCanUnloadNow()
 {
@@ -80,13 +78,13 @@ __control_entrypoint(DllExport) STDAPI DllCanUnloadNow()
     // Check for active objects or class factories.
     if (winrt::get_module_lock())
     {
-        // 如果有，則不能卸載。
+        // 如果有，則不能註銷。
         // Cannot unload if there are.
         return S_FALSE;
     }
     else
     {
-        // 如果沒有，則可以卸載。
+        // 如果沒有，則可以註銷。
         // Can unload if there are none.
         return S_OK;
     }

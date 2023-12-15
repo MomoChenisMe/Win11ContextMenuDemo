@@ -36,7 +36,7 @@ namespace Win11ContextMenuDemo::ClassFactory
         // LockServer is used to increment or decrement the lock count of the server.
         IFACEMETHODIMP LockServer(BOOL) noexcept override
         {
-            // 通常用於控制 DLL 是否可以被卸載，這裡簡單返回 S_OK。
+            // 通常用於控制 DLL 是否可以被註銷，這裡簡單返回 S_OK。
             // Usually used to control whether the DLL can be unloaded, here we simply return S_OK.
             return S_OK;
         }
