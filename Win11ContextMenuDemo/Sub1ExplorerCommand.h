@@ -4,7 +4,7 @@
 
 namespace Win11ContextMenuDemo::ExplorerCommand
 {
-    // Sub1ExplorerCommand 是一個實現子菜單的類別，繼承自 BaseExplorerCommand。
+    // Sub1ExplorerCommand 是一個實現子選單的類別，繼承自 BaseExplorerCommand。
     // Sub1ExplorerCommand is a class that implements a submenu, inheriting from BaseExplorerCommand.
     class Sub1ExplorerCommand : public BaseExplorerCommand
     {
@@ -13,7 +13,7 @@ namespace Win11ContextMenuDemo::ExplorerCommand
         // Constructor.
         Sub1ExplorerCommand();
 
-        // 執行子菜單的命令邏輯。
+        // 執行子選單的命令邏輯。
         // Execute the command logic of the submenu.
         IFACEMETHODIMP Invoke(IShellItemArray* psiItemArray, IBindCtx* pbc) noexcept override;
     };

@@ -7,11 +7,11 @@ namespace Win11ContextMenuDemo::Path
     // Retrieves the path of the directory where the application is located.
     const wstring GetAppDirectoryPath();
 
-    // 獲取上下文菜單相關文件所在目錄的路徑。
+    // 獲取上下文選單相關文件所在目錄的路徑。
     // Retrieves the path of the directory where context menu related files are located.
     const wstring GetContextMenuDirectoryPath();
 
-    // 獲取上下文菜單執行檔的完整路徑。
+    // 獲取上下文選單執行檔的完整路徑。
     // Retrieves the full path of the context menu executable.
     const wstring GetContextMenuExecutableFullPath();
 

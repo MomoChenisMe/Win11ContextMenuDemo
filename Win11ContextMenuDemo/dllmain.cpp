@@ -32,7 +32,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     return TRUE;
 }
 
-// 註冊 DLL 以便用於上下文菜單擴展。
+// 註冊 DLL 以便用於上下文選單擴展。
 // Register the DLL for context menu extension.
 STDAPI DllRegisterServer()
 {

@@ -124,7 +124,7 @@ wstring GetCLSIDString()
 	return clsid;
 }
 
-// 註冊上下文菜單。
+// 註冊上下文選單。
 // Registers the context menu.
 HRESULT RegisterContextMenu()
 {
@@ -144,7 +144,7 @@ HRESULT RegisterContextMenu()
 	return S_OK;
 }
 
-// 取消註冊上下文菜單。
+// 取消註冊上下文選單。
 // Unregisters the context menu.
 HRESULT UnRegisterContextMenu()
 {
