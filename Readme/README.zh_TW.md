@@ -64,3 +64,16 @@ Visual Studio 2022 需要安裝以下 NuGet 套件：
     signtool.exe sign /fd SHA256 /a /f <Your AppxPath>\Win11ContextMenu.pfx /t http://timestamp.digicert.com /p <Your Password> <Your AppxPath>\Win11ContextMenuDemo.msix
     ```
     如果需要進入debug模式可以添加`/debug`參數。
+<br>
+<br>
+
+## 註冊 DLL
+使用以下命令來註冊 DLL：
+```
+regsvr32.exe <Your DLL Path>
+```
+
+使用以下命令來註銷 DLL：
+```
+regsvr32.exe /u <Your DLL Path>
+```

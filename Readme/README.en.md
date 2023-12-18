@@ -64,3 +64,17 @@ Sign the Sparse package with the following command:
     signtool.exe sign /fd SHA256 /a /f <Your AppxPath>\Win11ContextMenu.pfx /t http://timestamp.digicert.com /p <Your Password> <Your AppxPath>\Win11ContextMenuDemo.msix
     ```
     To enter debug mode, add the `/debug` parameter.
+<br>
+<br>
+
+## Registering a DLL
+To register a DLL, use the following command:
+
+```
+regsvr32.exe <Your DLL Path>
+```
+
+To unregister a DLL, use the following command:
+```
+regsvr32.exe /u <Your DLL Path>
+```
