@@ -9,6 +9,10 @@ namespace Win11ContextMenuDemo::ExplorerCommand
     class BaseExplorerCommand : public winrt::implements<BaseExplorerCommand, IExplorerCommand, IObjectWithSite>
     {
     protected:
+       // 獲取當前 Explorer 路徑的方法。
+       // This method retrieves the current Explorer path.
+       virtual wstring GetCurrentExplorerPath(const winrt::com_ptr<IUnknown>& site);
+
         // 獲取多語言標題的方法。
         // Method for obtaining the multi-language title.
         virtual const wstring GetMultiLanguageTitle();

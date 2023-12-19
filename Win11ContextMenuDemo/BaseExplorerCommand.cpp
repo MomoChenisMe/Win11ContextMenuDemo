@@ -6,6 +6,37 @@ using namespace Win11ContextMenuDemo::ExplorerCommand;
 
 extern HMODULE g_module;
 
+wstring BaseExplorerCommand::GetCurrentExplorerPath(const winrt::com_ptr<IUnknown>& site)
+{
+	wstring path;
+	if (site) {
+		winrt::com_ptr<IServiceProvider> serviceProvider;
+		if (SUCCEEDED(site->QueryInterface(IID_PPV_ARGS(&serviceProvider)))) {
+			winrt::com_ptr<IShellBrowser> shellBrowser;
+			if (SUCCEEDED(serviceProvider->QueryService(SID_SShellBrowser, IID_PPV_ARGS(&shellBrowser)))) {
+				winrt::com_ptr<IShellView> shellView;
+				if (SUCCEEDED(shellBrowser->QueryActiveShellView(shellView.put()))) {
+					winrt::com_ptr<IFolderView> folderView;
+					if (SUCCEEDED(shellView->QueryInterface(IID_PPV_ARGS(&folderView)))) {
+						winrt::com_ptr<IPersistFolder2> persistFolder;
+						if (SUCCEEDED(folderView->GetFolder(IID_PPV_ARGS(&persistFolder)))) {
+							PIDLIST_ABSOLUTE curFolder;
+							if (SUCCEEDED(persistFolder->GetCurFolder(&curFolder))) {
+								wchar_t buf[MAX_PATH] = { 0 };
+								if (SHGetPathFromIDList(curFolder, buf)) {
+									path = buf;
+								}
+								CoTaskMemFree(curFolder);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return path;
+}
+
 const wstring BaseExplorerCommand::GetMultiLanguageTitle()
 {
 	constexpr int bufferSize = 1024;
