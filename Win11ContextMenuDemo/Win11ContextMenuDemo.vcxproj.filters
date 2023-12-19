@@ -13,7 +13,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="菜單">
+    <Filter Include="選單">
       <UniqueIdentifier>{91560cd6-b9f4-42fe-a299-f6676a6e93ab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -37,19 +37,19 @@
       <Filter>資源檔</Filter>
     </ClInclude>
     <ClInclude Include="BaseExplorerCommand.h">
-      <Filter>菜單</Filter>
+      <Filter>選單</Filter>
     </ClInclude>
     <ClInclude Include="MainExplorerCommand.h">
-      <Filter>菜單</Filter>
+      <Filter>選單</Filter>
     </ClInclude>
     <ClInclude Include="ClassFactory.h">
       <Filter>資源檔</Filter>
     </ClInclude>
     <ClInclude Include="Sub1ExplorerCommand.h">
-      <Filter>菜單</Filter>
+      <Filter>選單</Filter>
     </ClInclude>
     <ClInclude Include="EnumExplorerCommand.h">
-      <Filter>菜單</Filter>
+      <Filter>選單</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>標頭檔</Filter>
@@ -75,16 +75,16 @@
       <Filter>資源檔</Filter>
     </ClCompile>
     <ClCompile Include="BaseExplorerCommand.cpp">
-      <Filter>菜單</Filter>
+      <Filter>選單</Filter>
     </ClCompile>
     <ClCompile Include="MainExplorerCommand.cpp">
-      <Filter>菜單</Filter>
+      <Filter>選單</Filter>
     </ClCompile>
     <ClCompile Include="EnumExplorerCommand.cpp">
-      <Filter>菜單</Filter>
+      <Filter>選單</Filter>
     </ClCompile>
     <ClCompile Include="Sub1ExplorerCommand.cpp">
-      <Filter>菜單</Filter>
+      <Filter>選單</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
