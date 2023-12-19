@@ -11,7 +11,7 @@ namespace Win11ContextMenuDemo::ExplorerCommand
     protected:
        // 獲取當前 Explorer 路徑的方法。
        // This method retrieves the current Explorer path.
-       virtual wstring GetCurrentExplorerPath(const winrt::com_ptr<IUnknown>& site);
+       virtual wstring GetCurrentExplorerPath();
 
         // 獲取多語言標題的方法。
         // Method for obtaining the multi-language title.

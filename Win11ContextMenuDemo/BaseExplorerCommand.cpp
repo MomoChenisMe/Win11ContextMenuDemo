@@ -6,12 +6,12 @@ using namespace Win11ContextMenuDemo::ExplorerCommand;
 
 extern HMODULE g_module;
 
-wstring BaseExplorerCommand::GetCurrentExplorerPath(const winrt::com_ptr<IUnknown>& site)
+wstring BaseExplorerCommand::GetCurrentExplorerPath()
 {
 	wstring path;
-	if (site) {
+	if (m_Site) {
 		winrt::com_ptr<IServiceProvider> serviceProvider;
-		if (SUCCEEDED(site->QueryInterface(IID_PPV_ARGS(&serviceProvider)))) {
+		if (SUCCEEDED(m_Site->QueryInterface(IID_PPV_ARGS(&serviceProvider)))) {
 			winrt::com_ptr<IShellBrowser> shellBrowser;
 			if (SUCCEEDED(serviceProvider->QueryService(SID_SShellBrowser, IID_PPV_ARGS(&shellBrowser)))) {
 				winrt::com_ptr<IShellView> shellView;
