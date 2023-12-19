@@ -32,6 +32,21 @@ void BaseExplorerCommand::SetIconFileName(wstring fileName)
 	iconFileName = fileName;
 }
 
+HRESULT BaseExplorerCommand::SetSite(IUnknown* pUnkSite)
+{
+	m_Site = nullptr;
+	if (pUnkSite != nullptr)
+	{
+		m_Site.copy_from(pUnkSite);
+	}
+	return S_OK;
+}
+
+HRESULT BaseExplorerCommand::GetSite(REFIID riid, void** ppvSite)
+{
+	return S_OK;
+}
+
 IFACEMETHODIMP BaseExplorerCommand::GetTitle(IShellItemArray* psiItemArray, LPWSTR* ppszName)
 {
 	UNREFERENCED_PARAMETER(psiItemArray);

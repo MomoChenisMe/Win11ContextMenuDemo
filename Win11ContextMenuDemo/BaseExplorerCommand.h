@@ -6,7 +6,7 @@ namespace Win11ContextMenuDemo::ExplorerCommand
 {
     // BaseExplorerCommand 是一個基礎類，用於實現 IExplorerCommand 介面。
     // BaseExplorerCommand is a base class for implementing the IExplorerCommand interface.
-    class BaseExplorerCommand : public winrt::implements<BaseExplorerCommand, IExplorerCommand>
+    class BaseExplorerCommand : public winrt::implements<BaseExplorerCommand, IExplorerCommand, IObjectWithSite>
     {
     protected:
         // 獲取多語言標題的方法。
@@ -25,7 +25,18 @@ namespace Win11ContextMenuDemo::ExplorerCommand
         // Member variable to store the icon file name.
         wstring iconFileName = L"";
 
+        // 用於存儲 site 物件的 COM 指針。
+        // COM pointer to store the site object.
+        winrt::com_ptr<IUnknown> m_Site;
     public:
+        // 設置 site 物件的方法。
+        // Method to set the site object.
+        virtual HRESULT SetSite(IUnknown* pUnkSite);
+
+        // 獲取 site 物件的方法。
+        // Method to get the site object.
+        virtual HRESULT GetSite(REFIID riid, void** ppvSite);
+
         // 設置標題資源 ID 的方法。
         // Method to set the title resource ID.
         virtual void SetTitleResourceID(UINT id);
