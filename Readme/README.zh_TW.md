@@ -3,6 +3,12 @@
 <br>
 <br>
 
+## 相關文章
+ - [Windows 11 - 自定義右鍵選單（IExplorerCommand 程式實作）](https://www.momochenisme.com/2023/12/windows11-custom-contextmenu-with-iexplorercommand-and-sparsepackage.html)
+ - [Windows 11 - 自定義右鍵選單（Sparse Package 實作）](https://www.momochenisme.com/2023/12/windows11-custom-contextmenu-with-iexplorercommand-and-sparsepackage-part2.html)
+<br>
+<br>
+
 ## 準備工具
 為了開發此專案，需要準備以下工具：
 - [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hant/vs/whatsnew/)
